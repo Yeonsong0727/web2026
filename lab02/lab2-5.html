@@ -24,19 +24,23 @@
       font-size: 1.3em;
     }
 
+    /* 첫 번째 열 전체 왼쪽 정렬 ⭐ 핵심 */
+    th:first-child {
+      text-align: left;
+    }
+
+    /* 나머지 숫자 셀 가운데 */
+    td {
+      text-align: center;
+      background-color: #f2f2f2;
+    }
+
     thead th {
       background-color: #6bbcc3;
-      text-align: center;
     }
 
     tbody th {
       background-color: #6bbcc3;
-      text-align: left;
-    }
-
-    td {
-      background-color: #f2f2f2;
-      text-align: center;
     }
 
     tbody tr:first-child td:last-child {
