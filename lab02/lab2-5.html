@@ -1,42 +1,78 @@
-<style>
-  table {
-    width: 700px; 
-    border-collapse: collapse;
-    border: 1px solid darkgray;
-    margin: 20px auto;
-  }
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>실습 2-5</title>
+  <style>
+    table {
+      width: 700px;
+      border-collapse: collapse;
+      border: 1px solid darkgray;
+      margin: 20px auto;
+    }
 
-  caption {
-    caption-side: bottom;
-    font-size: 2em;
-    font-weight: bold;
-    padding-top: 15px;
-  }
+    caption {
+      caption-side: bottom;
+      font-size: 2em;
+      font-weight: bold;
+      padding-top: 15px;
+    }
 
-  th, td {
-    border: 1px solid darkgray;
-    padding: 20px;
-    text-align: center;
-    font-size: 1.3em;
-  }
+    th, td {
+      border: 1px solid darkgray;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.3em;
+    }
 
-  thead th {
-    background-color: #6bbcc3;
-  }
+    thead th {
+      background-color: #6bbcc3;
+    }
 
-  tbody th {
-    background-color: #6bbcc3;
-  }
+    tbody th {
+      background-color: #6bbcc3;
+    }
 
-  td {
-    background-color: #f2f2f2;
-  }
+    td {
+      background-color: #f2f2f2;
+    }
 
-  tbody tr:first-child td:last-child {
-    background-image: url("cherry_blossom.jpeg");
-    background-size: cover;
-    background-position: center;
-    color: black;
-    font-weight: bold;
-  }
-</style>
+    tbody tr:first-child td:last-child {
+      background-image: url("cherry_blossom.jpeg");
+      background-size: cover;
+      background-position: center;
+      color: black;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <caption>2023 국민 독서실태</caption>
+    <thead>
+      <tr>
+        <th>구분</th>
+        <th>성인</th>
+        <th>독서자</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>종이책</th>
+        <td>6.1권</td>
+        <td>11.8권</td>
+      </tr>
+      <tr>
+        <th>전자책</th>
+        <td>1.2권</td>
+        <td>7.1권</td>
+      </tr>
+      <tr>
+        <th>오디오북</th>
+        <td>0.2권</td>
+        <td>5.5권</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
