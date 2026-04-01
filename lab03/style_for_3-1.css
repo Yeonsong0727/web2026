@@ -1,189 +1,189 @@
 /* 1. 기본 초기화 및 공통 설정 */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* 패딩과 테두리를 포함하여 너비를 계산함 */
+    margin: 0;                 /* 모든 요소의 바깥쪽 여백을 0으로 초기화 */
+    padding: 0;                /* 모든 요소의 안쪽 여백을 0으로 초기화 */
+    box-sizing: border-box;    /* 패딩과 테두리를 너비(width)에 포함시켜 계산함 */
 }
 
 :root {
-    --sm-blue: rgb(0, 48, 135); 
+    --sm-blue: rgb(0, 48, 135); /* 반복 사용되는 파란색을 변수로 선언 */
 }
 
 body {
-    font-family: "Malgun Gothic", sans-serif;
-    background-color: #ffffff;
-    color: #333;
+    font-family: "Malgun Gothic", sans-serif; /* 기본 글꼴을 맑은 고딕으로 설정 */
+    background-color: #ffffff;  /* 페이지의 전체 배경색을 흰색으로 설정 */
+    color: #333;                /* 기본 텍스트 색상을 짙은 회색으로 설정 */
 }
 
 /* 2. 헤더 (상단 제목 및 네비게이션) */
 #top_header {
-    background-color: var(--sm-blue);
-    color: white;
-    padding: 20px 40px;
-    display: flex;             /* 제목과 메뉴를 가로로 배치 */
-    justify-content: space-between; /* 양 끝으로 배치 */
-    align-items: flex-end;     /* 바닥 라인에 맞춰 정렬 */
+    background-color: var(--sm-blue); /* 헤더 배경에 변수로 지정한 파란색 적용 */
+    color: white;               /* 헤더 내 텍스트 색상을 흰색으로 설정 */
+    padding: 20px 40px;         /* 헤더 안쪽에 상하 20px, 좌우 40px 여백 설정 */
+    display: flex;              /* 제목과 메뉴를 가로로 나열하기 위해 Flex박스 사용 */
+    justify-content: space-between; /* 요소들 사이에 균일한 간격을 두어 양 끝으로 배치 */
+    align-items: flex-end;      /* 내부 요소들을 바닥 라인에 맞춰 정렬 */
 }
 
-#title h1 { font-size: 28px; }
-#title p { font-size: 14px; margin-top: 5px; }
+#title h1 { font-size: 28px; }  /* 메인 제목의 글자 크기를 28px로 설정 */
+#title p { font-size: 14px; margin-top: 5px; } /* 소제목 크기 설정 및 위쪽 간격 5px 설정 */
 
 /* 메인 메뉴(Menu 1~4) 목록 */
 #navi {
-    display: flex;
-    list-style: none;
+    display: flex;              /* 메뉴 항목(li)들을 가로로 나열 */
+    list-style: none;           /* 목록 앞의 기본 불렛 기호 제거 */
 }
 
 #navi > li {
-    position: relative;        /* 서브 메뉴(absolute)의 기준점이 됨 */
-    padding: 0 20px;
+    position: relative;         /* 하위 서브 메뉴(absolute) 배치의 기준점이 됨 */
+    padding: 0 20px;            /* 각 메뉴 항목 사이에 좌우 20px씩 여백 설정 */
 }
 
 #navi > li > a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    display: block;
-    padding-bottom: 5px;
+    color: white;               /* 링크 텍스트 색상을 흰색으로 설정 */
+    text-decoration: none;      /* 링크의 기본 밑줄 제거 */
+    font-weight: bold;          /* 글자를 굵게 설정 */
+    display: block;             /* 클릭 영역을 확보하기 위해 블록 요소로 변경 */
+    padding-bottom: 5px;        /* 텍스트 아래쪽에 5px 여백 설정 */
 }
 
 /* --- 드롭다운 서브 메뉴 스타일 --- */
 #navi ul {
-    display: none;             /* 기본 상태에서는 화면에서 숨김 */
-    position: absolute;        /* 메인 메뉴 위치를 기준으로 절대 배치 */
-    top: 100%;                 /* 메인 메뉴 바로 아래에 위치 */
-    left: 50%;
-    transform: translateX(-50%); /* 메뉴의 중앙에 맞춤 */
-    background-color: #ffffff;  /* 사진처럼 흰색 배경 */
-    border: 1px solid var(--sm-blue);
-    list-style: none;
-    min-width: 110px;
-    z-index: 100;              /* 다른 요소보다 위에 보이게 함 */
+    display: none;              /* 기본 상태에서는 화면에서 보이지 않게 숨김 */
+    position: absolute;         /* 문서 흐름에서 벗어나 부모(li)를 기준으로 절대 배치 */
+    top: 100%;                  /* 부모 메뉴의 바로 아래쪽 끝 지점에 위치 */
+    left: 50%;                  /* 부모 요소 가로 길이의 절반 위치로 이동 */
+    transform: translateX(-50%); /* 정확한 중앙 정렬을 위해 왼쪽으로 자신의 너비 절반만큼 이동 */
+    background-color: #ffffff;   /* 서브 메뉴 박스의 배경색을 흰색으로 설정 */
+    border: 1px solid var(--sm-blue); /* 박스 테두리에 파란색 1px 실선 적용 */
+    list-style: none;           /* 서브 메뉴 목록의 불렛 기호 제거 */
+    min-width: 110px;           /* 메뉴 박스의 최소 너비를 110px로 제한 */
+    z-index: 100;               /* 다른 콘텐츠보다 위에 표시되도록 우선순위 높임 */
 }
 
 #navi li:hover ul {
-    display: block;            /* 마우스를 올렸을 때만 서브 메뉴를 보여줌 */
+    display: block;             /* 메인 메뉴에 마우스를 올리면 숨겨진 서브 메뉴를 표시함 */
 }
 
 #navi ul li a {
-    color: var(--sm-blue);     /* 서브 메뉴 글씨는 파란색 */
-    padding: 8px 12px;
-    text-decoration: none;
-    display: block;
-    font-size: 12px;
-    text-align: center;
-    border-bottom: 1px solid #eee;
+    color: var(--sm-blue);      /* 서브 메뉴 내 텍스트 색상을 파란색으로 설정 */
+    padding: 8px 12px;          /* 서브 메뉴 링크 안쪽에 여백 설정 */
+    text-decoration: none;      /* 서브 메뉴 링크의 밑줄 제거 */
+    display: block;             /* 메뉴 한 줄 전체를 클릭 가능하게 함 */
+    font-size: 12px;            /* 글자 크기를 12px로 설정 */
+    text-align: center;         /* 텍스트를 박스 가운데로 정렬 */
+    border-bottom: 1px solid #eee; /* 메뉴 항목 사이에 옅은 회색 구분선 추가 */
 }
 
 #navi ul li a:hover {
-    background-color: var(--sm-blue);
-    color: white;              /* 마우스 올리면 색상 반전 */
+    background-color: var(--sm-blue); /* 마우스 오버 시 서브 메뉴 배경을 파란색으로 변경 */
+    color: white;               /* 마우스 오버 시 서브 메뉴 텍스트를 흰색으로 변경 */
 }
 
 /* 3. 사이드바 (왼쪽 로그인 영역) */
 #login {
-    float: left;               /* 왼쪽으로 띄움 */
-    width: 200px;              /* 고정 너비 */
-    background-color: var(--sm-blue);
-    color: white;
-    min-height: 700px;         /* 사진처럼 아래까지 길게 내려오도록 설정 */
-    padding: 20px;
+    float: left;                /* 요소를 페이지 왼쪽으로 띄워 가로 배치함 */
+    width: 200px;               /* 사이드바 너비를 200px로 고정함 */
+    background-color: var(--sm-blue); /* 사이드바 배경색을 파란색으로 설정 */
+    color: white;               /* 내부 텍스트 색상을 흰색으로 설정 */
+    min-height: 700px;          /* 최소 높이를 700px로 설정하여 아래로 길게 유지함 */
+    padding: 20px;              /* 사이드바 내부 사방에 20px 여백 설정 */
 }
 
-#login label { display: block; margin-top: 10px; font-size: 13px; }
+#login label { display: block; margin-top: 10px; font-size: 13px; } /* 라벨을 줄바꿈하고 간격 설정 */
 #login input[type="text"], 
 #login input[type="password"] {
-    width: 100%;               /* 입력창을 부모 너비에 맞춤 */
-    margin: 5px 0 10px;
+    width: 100%;                /* 입력창 너비를 부모 요소(login)에 꽉 채움 */
+    margin: 5px 0 10px;         /* 입력창 위 5px, 아래 10px의 간격 설정 */
 }
 
 /* 로그인/회원가입 버튼 가로 배치 */
 #login input[type="submit"], 
 #login input[type="button"] {
-    padding: 4px 8px;
-    cursor: pointer;
+    padding: 4px 8px;           /* 버튼 내부 여백 설정 */
+    cursor: pointer;            /* 마우스 오버 시 클릭 손가락 모양으로 변경 */
 }
 
 /* 4. 사이드바 (오른쪽 광고 영역) */
 #ad {
-    float: right;              /* 오른쪽으로 띄움 */
-    width: 210px;
-    padding: 20px 10px;
+    float: right;               /* 요소를 페이지 오른쪽으로 띄워 가로 배치함 */
+    width: 210px;               /* 사이드바 너비를 210px로 고정함 */
+    padding: 20px 10px;         /* 상하 20px, 좌우 10px 여백 설정 */
 }
 
 #ad article {
-    background: white;
-    border: 1px solid var(--sm-blue); /* 파란색 테두리 */
-    border-radius: 10px;       /* 모서리를 둥글게 */
-    padding: 15px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 13px;
+    background: white;          /* 광고 박스 배경을 흰색으로 설정 */
+    border: 1px solid var(--sm-blue); /* 광고 박스 테두리에 파란색 적용 */
+    border-radius: 10px;        /* 광고 박스 모서리를 10px만큼 둥글게 설정 */
+    padding: 15px;              /* 광고 박스 내부 여백을 15px로 설정 */
+    margin-bottom: 20px;        /* 각 광고 박스 아래쪽에 20px 간격 설정 */
+    text-align: center;         /* 내부 텍스트와 이미지를 가운데 정렬함 */
+    font-size: 13px;            /* 글자 크기를 13px로 설정 */
 }
 
 #ad img { 
-    max-width: 100%;           /* 부모 박스보다 커지지 않게 제한 */
-    margin: 10px 0; 
+    max-width: 100%;            /* 이미지가 부모 너비(ad)를 넘지 않도록 제한함 */
+    margin: 10px 0;             /* 이미지 위아래에 10px 간격 설정 */
 }
 
 /* 5. 중앙 콘텐츠 (포스트 카드 영역) */
 #post {
-    /* 왼쪽 로그인창(200px)과 오른쪽 광고창(210px) 사이 공간 확보 */
-    margin-left: 210px;
-    margin-right: 220px;
-    padding: 20px;
+    /* 왼쪽 로그인창(200px)과 오른쪽 광고창(210px)의 너비를 고려해 좌우 여백 확보 */
+    margin-left: 210px;         /* 왼쪽으로 210px 여백을 두어 로그인창과 겹치지 않게 함 */
+    margin-right: 220px;        /* 오른쪽으로 220px 여백을 두어 광고창과 겹치지 않게 함 */
+    padding: 20px;              /* 본문 안쪽에 20px 여백 설정 */
 }
 
 .card {
-    background: white;
-    border: 1px solid #999;    /* 회색 테두리 */
-    border-radius: 15px;       /* 카드 모서리 둥글게 */
-    padding: 20px;
-    margin-bottom: 25px;
-    overflow: hidden;          /* 내부 float 요소(이미지)가 삐져나가지 않게 함 */
+    background: white;          /* 카드 배경색을 흰색으로 설정 */
+    border: 1px solid #999;     /* 카드 테두리에 짙은 회색 실선 적용 */
+    border-radius: 15px;        /* 카드 모서리를 15px만큼 둥글게 설정 */
+    padding: 20px;              /* 카드 내부 사방에 20px 여백 설정 */
+    margin-bottom: 25px;        /* 각 카드 아래쪽에 25px 간격 설정 */
+    overflow: hidden;           /* float된 이미지가 카드 영역을 벗어나지 않도록 감싸줌 */
 }
 
 .card h3 { 
-    margin-bottom: 15px; 
-    border-bottom: 1px solid #eee; /* 제목 아래 얇은 줄 */
-    padding-bottom: 5px;
+    margin-bottom: 15px;        /* 제목 아래쪽에 15px 간격 설정 */
+    border-bottom: 1px solid #eee; /* 제목 아래에 아주 옅은 회색 구분선 추가 */
+    padding-bottom: 5px;        /* 제목과 구분선 사이의 간격 설정 */
 }
 
 /* 카드 내부 이미지 배치 */
 .card figure {
-    float: left;               /* 이미지를 왼쪽으로 보냄 */
-    margin-right: 20px;
+    float: left;                /* 이미지를 본문 왼쪽으로 보내 텍스트가 옆에 흐르게 함 */
+    margin-right: 20px;         /* 이미지 오른쪽과 텍스트 사이에 20px 여백 설정 */
 }
 
 .card img {
-    width: 180px;              /* 이미지 크기 고정 */
-    height: auto;
-    border: 1px solid #ccc;
+    width: 180px;               /* 이미지의 너비를 180px로 고정함 */
+    height: auto;               /* 원본 비율에 맞춰 높이를 자동 계산함 */
+    border: 1px solid #ccc;     /* 이미지 테두리에 옅은 회색 적용 */
 }
 
 .card p {
-    font-size: 14px;
-    line-height: 1.6;
-    text-align: justify;       /* 양쪽 정렬 */
+    font-size: 14px;            /* 본문 글자 크기를 14px로 설정 */
+    line-height: 1.6;           /* 줄 사이 간격을 가독성 있게 1.6배로 설정 */
+    text-align: justify;        /* 텍스트 좌우 끝을 일직선으로 맞추는 양쪽 정렬 적용 */
 }
 
 /* 6. 푸터 (하단 영역) */
 footer {
-    clear: both;               /* 상단의 float(왼쪽/오른쪽 배치) 영향을 제거 */
-    background-color: var(--sm-blue);
-    color: white;
-    padding: 15px;
-    margin-top: 20px;
+    clear: both;                /* 상단의 float 설정된 사이드바들의 영향력을 제거함 */
+    background-color: var(--sm-blue); /* 푸터 배경에 파란색 적용 */
+    color: white;               /* 푸터 텍스트 색상을 흰색으로 설정 */
+    padding: 15px;              /* 푸터 내부 여백을 15px로 설정 */
+    margin-top: 20px;           /* 본문 영역과 푸터 사이에 20px 간격 설정 */
 }
 
 #foot ul {
-    list-style: none;
-    display: flex;             /* 하단 메뉴 가로로 나열 */
-    justify-content: space-around; /* 간격을 균등하게 배분 */
+    list-style: none;           /* 푸터 메뉴의 불렛 기호 제거 */
+    display: flex;              /* 푸터 메뉴 항목들을 가로로 나열함 */
+    justify-content: space-around; /* 메뉴 항목들 사이의 간격을 동일하게 배분함 */
 }
 
 #foot a {
-    color: white;
-    text-decoration: none;
-    font-size: 13px;
+    color: white;               /* 푸터 링크 텍스트를 흰색으로 설정 */
+    text-decoration: none;      /* 링크 밑줄 제거 */
+    font-size: 13px;            /* 글자 크기를 13px로 설정 */
 }
