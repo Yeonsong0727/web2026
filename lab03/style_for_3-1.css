@@ -1,199 +1,189 @@
 /* 1. 기본 초기화 및 공통 설정 */
 * {
-    margin: 0;                 /* 모든 요소의 외부 여백을 0으로 설정 */
-    padding: 0;                /* 모든 요소의 내부 여백을 0으로 설정 */
-    box-sizing: border-box;    /* 패딩과 테두리를 너비에 포함하여 레이아웃 뒤틀림 방지 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 패딩과 테두리를 포함하여 너비를 계산함 */
 }
 
 :root {
-    --sm-blue: rgb(0, 48, 135); /* 메인 테마 색상을 변수로 지정 */
+    --sm-blue: rgb(0, 48, 135); 
 }
 
 body {
-    font-family: "Malgun Gothic", sans-serif; /* 기본 글꼴 설정 */
-    background-color: #ffffff;  /* 배경색 흰색 설정 */
-    color: #333;                /* 기본 글자색 설정 */
+    font-family: "Malgun Gothic", sans-serif;
+    background-color: #ffffff;
+    color: #333;
 }
 
 /* 2. 헤더 (상단 제목 및 네비게이션) */
 #top_header {
-    background-color: var(--sm-blue); /* 배경에 파란색 적용 */
-    color: white;               /* 글자색 흰색 설정 */
-    padding: 20px 40px;         /* 상하좌우 여백 설정 */
-    display: flex;              /* 가로 배치를 위한 flex 설정 */
-    justify-content: space-between; /* 양 끝 정렬 */
-    align-items: flex-end;      /* 하단 기준 정렬 */
+    background-color: var(--sm-blue);
+    color: white;
+    padding: 20px 40px;
+    display: flex;             /* 제목과 메뉴를 가로로 배치 */
+    justify-content: space-between; /* 양 끝으로 배치 */
+    align-items: flex-end;     /* 바닥 라인에 맞춰 정렬 */
 }
 
-#title h1 { font-size: 28px; }  /* 제목 크기 설정 */
-#title p { font-size: 14px; margin-top: 5px; } /* 소제목 설정 */
+#title h1 { font-size: 28px; }
+#title p { font-size: 14px; margin-top: 5px; }
 
+/* 메인 메뉴(Menu 1~4) 목록 */
 #navi {
-    display: flex;              /* 메뉴 항목 가로 배치 */
-    list-style: none;           /* 목록 기호 제거 */
+    display: flex;
+    list-style: none;
 }
 
 #navi > li {
-    position: relative;         /* 서브 메뉴 배치의 기준점 */
-    padding: 0 15px;            /* 메뉴 간 간격 */
+    position: relative;        /* 서브 메뉴(absolute)의 기준점이 됨 */
+    padding: 0 20px;
 }
 
 #navi > li > a {
-    color: white;               /* 메뉴 글자색 흰색 */
-    text-decoration: none;      /* 밑줄 제거 */
-    font-weight: bold;          /* 굵게 설정 */
-    display: block;             /* 클릭 영역 확대 */
-    padding: 8px 15px;          /* 안쪽 여백 */
-    transition: 0.3s;           /* 부드러운 전환 효과 */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding-bottom: 5px;
 }
 
-/* [수정사항 1] 메인 메뉴 마우스 오버 시 흰색 배경 반전 효과 */
-#navi > li > a:hover {
-    background-color: white;    /* 마우스 올리면 배경색 흰색 */
-    color: var(--sm-blue);      /* 글자색은 파란색으로 변경 */
-    border-radius: 5px;         /* 모서리 살짝 둥글게 */
-}
-
+/* --- 드롭다운 서브 메뉴 스타일 --- */
 #navi ul {
-    display: none;              /* 기본 상태에서 서브 메뉴 숨김 */
-    position: absolute;         /* 다른 요소 위에 띄움 */
-    top: 100%;                  /* 메뉴 하단에 위치 */
-    left: 50%;                  /* 중앙 정렬 기준 */
-    transform: translateX(-50%); /* 가로 중앙 정렬 */
-    background-color: #ffffff;   /* 서브 메뉴 배경 흰색 */
-    border: 1px solid var(--sm-blue); /* 테두리 설정 */
-    list-style: none;           /* 기호 제거 */
-    min-width: 120px;           /* 최소 너비 */
-    z-index: 100;               /* 최상단 배치 */
+    display: none;             /* 기본 상태에서는 화면에서 숨김 */
+    position: absolute;        /* 메인 메뉴 위치를 기준으로 절대 배치 */
+    top: 100%;                 /* 메인 메뉴 바로 아래에 위치 */
+    left: 50%;
+    transform: translateX(-50%); /* 메뉴의 중앙에 맞춤 */
+    background-color: #ffffff;  /* 사진처럼 흰색 배경 */
+    border: 1px solid var(--sm-blue);
+    list-style: none;
+    min-width: 110px;
+    z-index: 100;              /* 다른 요소보다 위에 보이게 함 */
 }
 
 #navi li:hover ul {
-    display: block;             /* 마우스 올리면 서브 메뉴 표시 */
+    display: block;            /* 마우스를 올렸을 때만 서브 메뉴를 보여줌 */
 }
 
 #navi ul li a {
-    color: var(--sm-blue);      /* 서브 메뉴 글자 파란색 */
-    padding: 10px;              /* 여백 설정 */
-    text-decoration: none;      /* 밑줄 제거 */
-    display: block;             /* 영역 확대 */
-    font-size: 13px;            /* 글자 크기 */
-    text-align: center;         /* 중앙 정렬 */
+    color: var(--sm-blue);     /* 서브 메뉴 글씨는 파란색 */
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
 }
 
 #navi ul li a:hover {
-    background-color: var(--sm-blue); /* 호버 시 배경 파란색 */
-    color: white;               /* 글자 흰색 */
+    background-color: var(--sm-blue);
+    color: white;              /* 마우스 올리면 색상 반전 */
 }
 
 /* 3. 사이드바 (왼쪽 로그인 영역) */
 #login {
-    float: left;                /* 왼쪽 배치 */
-    width: 200px;               /* 너비 고정 */
-    background-color: var(--sm-blue); /* 배경 파란색 */
-    color: white;               /* 글자 흰색 */
-    /* [수정사항 2] 높이를 450px로 최적화하여 불필요한 스크롤 제거 */
-    min-height: 450px;          
-    padding: 20px;              /* 내부 여백 */
+    float: left;               /* 왼쪽으로 띄움 */
+    width: 200px;              /* 고정 너비 */
+    background-color: var(--sm-blue);
+    color: white;
+    min-height: 700px;         /* 사진처럼 아래까지 길게 내려오도록 설정 */
+    padding: 20px;
 }
 
 #login label { display: block; margin-top: 10px; font-size: 13px; }
 #login input[type="text"], 
 #login input[type="password"] {
-    width: 100%;                /* 너비 꽉 채움 */
-    margin: 5px 0 10px;         /* 상하 간격 */
+    width: 100%;               /* 입력창을 부모 너비에 맞춤 */
+    margin: 5px 0 10px;
 }
 
+/* 로그인/회원가입 버튼 가로 배치 */
 #login input[type="submit"], 
 #login input[type="button"] {
-    padding: 5px 10px;          /* 버튼 여백 */
-    cursor: pointer;            /* 클릭 아이콘 */
+    padding: 4px 8px;
+    cursor: pointer;
 }
 
 /* 4. 사이드바 (오른쪽 광고 영역) */
 #ad {
-    float: right;               /* 오른쪽 배치 */
-    width: 210px;               /* 너비 고정 */
-    padding: 20px 10px;         /* 내부 여백 */
+    float: right;              /* 오른쪽으로 띄움 */
+    width: 210px;
+    padding: 20px 10px;
 }
 
 #ad article {
-    background: white;          /* 광고 배경 흰색 */
-    border: 1px solid var(--sm-blue); /* 광고 테두리 */
-    border-radius: 10px;        /* 둥근 모서리 */
-    padding: 15px;              /* 내부 여백 */
-    margin-bottom: 20px;        /* 하단 간격 */
-    text-align: center;         /* 중앙 정렬 */
-    font-size: 13px;            /* 글자 크기 */
+    background: white;
+    border: 1px solid var(--sm-blue); /* 파란색 테두리 */
+    border-radius: 10px;       /* 모서리를 둥글게 */
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 13px;
 }
 
 #ad img { 
-    max-width: 100%;            /* 너비 초과 방지 */
-    margin: 10px 0;             /* 상하 여백 */
+    max-width: 100%;           /* 부모 박스보다 커지지 않게 제한 */
+    margin: 10px 0; 
 }
 
 /* 5. 중앙 콘텐츠 (포스트 카드 영역) */
 #post {
-    margin-left: 210px;         /* 왼쪽 사이드바 공간 확보 */
-    margin-right: 220px;        /* 오른쪽 사이드바 공간 확보 */
-    padding: 20px;              /* 본문 여백 */
+    /* 왼쪽 로그인창(200px)과 오른쪽 광고창(210px) 사이 공간 확보 */
+    margin-left: 210px;
+    margin-right: 220px;
+    padding: 20px;
 }
 
 .card {
-    background: white;          /* 카드 배경 흰색 */
-    border: 1px solid #ccc;     /* 카드 테두리 */
-    border-radius: 15px;        /* 둥근 모서리 */
-    padding: 20px;              /* 카드 여백 */
-    margin-bottom: 25px;        /* 카드 간격 */
-    /* [수정사항 3] 이미지와 텍스트를 나란히 두기 위해 Flex 설정 */
-    display: flex;
-    flex-wrap: wrap;            /* 공간 부족 시 자동 줄바꿈 */
+    background: white;
+    border: 1px solid #999;    /* 회색 테두리 */
+    border-radius: 15px;       /* 카드 모서리 둥글게 */
+    padding: 20px;
+    margin-bottom: 25px;
+    overflow: hidden;          /* 내부 float 요소(이미지)가 삐져나가지 않게 함 */
 }
 
-.card header { 
-    width: 100%;                /* 제목 줄은 가로 전체 사용 */
-    margin-bottom: 15px;        /* 하단 간격 */
-    border-bottom: 1px solid #eee; /* 구분선 */
-    padding-bottom: 5px;        /* 선과의 여백 */
+.card h3 { 
+    margin-bottom: 15px; 
+    border-bottom: 1px solid #eee; /* 제목 아래 얇은 줄 */
+    padding-bottom: 5px;
 }
 
-.card h3 { color: #333; }       /* 카드 제목 색상 */
-
+/* 카드 내부 이미지 배치 */
 .card figure {
-    flex: 0 0 180px;            /* 이미지 너비를 180px로 고정 */
-    margin-right: 20px;         /* 텍스트와의 간격 */
+    float: left;               /* 이미지를 왼쪽으로 보냄 */
+    margin-right: 20px;
 }
 
 .card img {
-    width: 100%;                /* 부모 너비에 맞춤 */
-    height: auto;               /* 비율 유지 */
-    border: 1px solid #ddd;     /* 이미지 테두리 */
+    width: 180px;              /* 이미지 크기 고정 */
+    height: auto;
+    border: 1px solid #ccc;
 }
 
 .card p {
-    flex: 1;                    /* 남은 공간 텍스트가 차지 */
-    font-size: 14px;            /* 글자 크기 */
-    line-height: 1.6;           /* 줄 간격 */
-    text-align: justify;        /* 양쪽 정렬 */
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: justify;       /* 양쪽 정렬 */
 }
 
 /* 6. 푸터 (하단 영역) */
 footer {
-    clear: both;                /* float 흐름 해제 */
-    background-color: var(--sm-blue); /* 배경 파란색 */
-    color: white;               /* 글자 흰색 */
-    padding: 20px;              /* 내부 여백 */
-    /* [수정사항 4] 본문과 자연스럽게 이어지도록 여백 설정 */
-    margin-top: 10px;           
+    clear: both;               /* 상단의 float(왼쪽/오른쪽 배치) 영향을 제거 */
+    background-color: var(--sm-blue);
+    color: white;
+    padding: 15px;
+    margin-top: 20px;
 }
 
 #foot ul {
-    list-style: none;           /* 기호 제거 */
-    display: flex;              /* 가로 나열 */
-    justify-content: space-around; /* 간격 균등 분할 */
+    list-style: none;
+    display: flex;             /* 하단 메뉴 가로로 나열 */
+    justify-content: space-around; /* 간격을 균등하게 배분 */
 }
 
 #foot a {
-    color: white;               /* 링크 글자색 */
-    text-decoration: none;      /* 밑줄 제거 */
-    font-size: 13px;            /* 글자 크기 */
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
 }
